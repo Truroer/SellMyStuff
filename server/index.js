@@ -19,6 +19,12 @@ const config = {
 };
 
 const pool = new pg.Pool(config);
+pool.connect(function(err, client, done) {
+  if (err) {
+    console.log("Can not connect to the DB" + err);
+  }
+  client.query(controller.createTableAds());
+});
 
 app.get("/", (req, res, next) => {
   pool.connect(function(err, client, done) {
@@ -27,7 +33,7 @@ app.get("/", (req, res, next) => {
     }
     client.query(
       controller.getAllAds(),
-      // deleteTable('ads')
+      //   controller.deleteTable("ads"),
       // createTableAds()
       function(err, result) {
         done();

@@ -1,5 +1,5 @@
 const createTableAds = () => {
-  return `CREATE TABLE ads (
+  return `CREATE TABLE IF NOT EXISTS ads (
     price int, 
     title varchar(80), 
     date bigint,
