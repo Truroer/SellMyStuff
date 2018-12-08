@@ -196,8 +196,6 @@ export class ConfigService {
   }
 
   getShipments(selectedAddData, buyerLocation): Observable<any> {
-    console.log("ewfefd", selectedAddData.weight);
-
     return Observable.create(observer => {
       this.getAddress().subscribe(addressData => {
         this.http

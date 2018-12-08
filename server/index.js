@@ -47,30 +47,25 @@ app.post("/createad", (req, res, next) => {
       console.log("Can not connect to the DB" + err);
     }
     client.query(
-      controller
-        //  createTableAds()
-        // getAllAds()
-        // deleteTable('ads')
-        // insertAd('Somebody3', 'nice thing blabla', 'pic3.jpg', 4.1, 1.1, 'ESP', 'Madrid', 08005, 'Carrer', 27, 50, 30, 20, 20)
-        .insertAd(
-          req.body.price,
-          req.body.title,
-          req.body.date,
-          req.body.username,
-          req.body.description,
-          req.body.pictureName,
-          req.body.lat,
-          req.body.lon,
-          req.body.country,
-          req.body.city,
-          req.body.postcode,
-          req.body.road,
-          req.body.house_number,
-          req.body.length,
-          req.body.width,
-          req.body.height,
-          req.body.weight
-        ),
+      controller.insertAd(
+        req.body.price,
+        req.body.title,
+        req.body.date,
+        req.body.username,
+        req.body.description,
+        req.body.pictureName,
+        req.body.lat,
+        req.body.lon,
+        req.body.country,
+        req.body.city,
+        req.body.postcode,
+        req.body.road,
+        req.body.house_number,
+        req.body.length,
+        req.body.width,
+        req.body.height,
+        req.body.weight
+      ),
       function(err, result) {
         done();
         if (err) {
@@ -132,10 +127,6 @@ app.post("/search", (req, res, next) => {
     );
   });
 });
-
-// app.get('/', controller.getAll);
-// app.post('/createNewTopic', controller.postTopic);
-// app.delete('/deleteTopic', controller.deleteTopic);
 
 app.listen(port, () => {
   console.log("Express listening on port: ", port);
