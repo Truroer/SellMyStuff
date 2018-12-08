@@ -1,25 +1,40 @@
-
-
-<div class = "nav">
-  <button class="home" (click)="refresh()" routerLinkActive="active">Home</button>
-  <form (ngSubmit)="onSubmit()"  class="search">
+<div class="nav">
+  <button class="home" (click)="refresh()" routerLinkActive="active">
+    Home
+  </button>
+  <form (ngSubmit)="onSubmit()" class="search">
     <p class="searchL">
       <label class="searchL">
-        <input type="text" [formControl]="search" (focus)="clear()" class="searchC">
+        <input
+          type="text"
+          [formControl]="search"
+          (focus)="clear()"
+          class="searchC"
+        />
       </label>
     </p>
   </form>
-  <button class="newad" routerLink="/newad" routerLinkActive="active">Create New Ad</button>
+  <button class="newad" routerLink="/newad" routerLinkActive="active">
+    Create New Ad
+  </button>
 </div>
 
 <div class="list">
-<div class="list" *ngFor="let ad of adsData">
-  <div class="item" [routerLink]="['/details', ad.date]"  routerLinkActive="active">
-    <img src={{ad.picturename}}  alt="" style="width:100px; border-radius: 10px" class="pic"> 
-    <!-- <div class="date">added on: {{ad.date}}</div> -->
-    <div class="title">{{ad.title}} </div>
-    <div class="city">{{ad.city}}</div>
-    <div class="price">{{ad.price}} €</div>
+  <div class="list" *ngFor="let ad of adsData">
+    <div
+      class="item"
+      [routerLink]="['/details', ad.date]"
+      routerLinkActive="active"
+    >
+      <img
+        src="{{ad.picturename}}"
+        alt=""
+        style="width:100px; border-radius: 10px"
+        class="pic"
+      />
+      <div class="title">{{ ad.title }}</div>
+      <div class="city">{{ ad.city }}</div>
+      <div class="price">{{ ad.price }} €</div>
+    </div>
   </div>
-</div>
 </div>

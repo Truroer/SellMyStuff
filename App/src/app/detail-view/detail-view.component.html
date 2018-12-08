@@ -1,76 +1,82 @@
-<div class="dd">
-<p class = "nav">
+<div *ngIf="selectedAd && buyerLocation" class="dd">
+  <p class="nav">
     <button class="home" routerLink="/" routerLinkActive="active">Home</button>
-  
-    <button class="newad" routerLink="/newad" routerLinkActive="active">Create New Ad</button>
-</p>
-  
-<p class="from">Ad from: {{selectedAd.username}}</p>
-<img src={{selectedAd.picturename}}  alt="" style="width:70%; border-radius: 10px" class="pic"> 
-<div class="tp">
-  <span class="title">{{selectedAd.title}} </span> 
-  <span class="price">{{selectedAd.price}} €</span>
-</div>
-<p class="location">Item Location: {{selectedAd.city}}, {{selectedAd.country}}</p>
 
-<p class="description">{{selectedAd.description}}</p>
+    <button class="newad" routerLink="/newad" routerLinkActive="active">
+      Create New Ad
+    </button>
+  </p>
 
+  <p class="from">Ad from: {{ selectedAd.username }}</p>
+  <img
+    src="{{selectedAd.picturename}}"
+    alt=""
+    style="width:70%; border-radius: 10px"
+    class="pic"
+  />
+  <div class="tp">
+    <span class="title">{{ selectedAd.title }} </span>
+    <span class="price">{{ selectedAd.price }} €</span>
+  </div>
+  <p class="location">
+    Item Location: {{ selectedAd.city }}, {{ selectedAd.country }}
+  </p>
 
+  <p class="description">{{ selectedAd.description }}</p>
 
-
-
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <div formGroupName="address" class="form">
       <h3>Get shipment estimates for your Location:</h3>
-    
+
       <label>
-        Street: 
-        <input class="field" type="text" formControlName="road">
+        Street: <input class="field" type="text" formControlName="road" />
       </label>
-    
+
       <label>
         House nr:
-        <input class="field" type="text" formControlName="house_number">
+        <input class="field" type="text" formControlName="house_number" />
       </label>
-      
+
       <label>
-        City:       
-        <input class="field" type="text" formControlName="city">
+        City: <input class="field" type="text" formControlName="city" />
       </label>
-    
+
       <label>
-        Postcode:
-        <input class="field" type="text" formControlName="postcode">
+        Postcode: <input class="field" type="text" formControlName="postcode" />
       </label>
-  
+
       <label>
-        Country: 
-        <input class="field" type="text" formControlName="country">
+        Country: <input class="field" type="text" formControlName="country" />
       </label>
-  
-      <button class="submitA" type="submit" [disabled]="!profileForm.valid">Submit Address</button>
-    
+
+      <button class="submitA" type="submit" [disabled]="!profileForm.valid">
+        Submit Address
+      </button>
     </div>
   </form>
+  <div *ngIf="quoteData">
+    <h3>Here are some shipping options for following package:</h3>
+    <div class="packageD">
+      weight: {{ quoteData.data.rates[0].charge_weight.value }}
+      {{ quoteData.data.rates[0].charge_weight.unit }}
+    </div>
+    <div class="packageD">
+      size: {{ selectedAd.length }} x {{ selectedAd.width }} x
+      {{ selectedAd.height }} cm
+    </div>
+    <div class="packageD">
+      to: {{ buyerLocation.city }}, {{ buyerLocation.country }}
+    </div>
 
-  
-  
-  <h3> Here are some shipping options for following package: </h3>
-  <div class="packageD">weight: {{quoteData.data.rates[0].charge_weight.value}} {{quoteData.data.rates[0].charge_weight.unit}}</div>
-  <div class="packageD">  size: {{selectedAd.length}} x {{selectedAd.width}} x {{selectedAd.height}} cm </div>
-  <div class="packageD">to: {{buyerLocation.city}}, {{buyerLocation.country}}</div> 
-  
-  <div *ngFor="let shipment of quoteData.data.rates">
-    <h5> - {{(shipment.total_charge.amount*0.11).toFixed(2)}} EUR/
-    by: {{shipment.shipper_account.slug}} /
-    via: {{shipment.service_name}}
-    </h5> 
+    <div *ngFor="let shipment of quoteData.data.rates">
+      <h5>
+        - {{ (shipment.total_charge.amount * 0.11).toFixed(2) }} EUR/ by:
+        {{ shipment.shipper_account.slug }} / via: {{ shipment.service_name }}
+      </h5>
+    </div>
+
+    <button class="delete" (click)="deleteAd()" routerLinkActive="active">
+      Delete Ad
+    </button>
   </div>
-
-  <button class="delete" (click)="deleteAd()" routerLinkActive="active">Delete Ad</button>
-
 </div>
-  
-
-
