@@ -1,16 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { DetailViewComponent } from "./detail-view.component";
 
-import { DetailViewComponent } from './detail-view.component';
-
-describe('DetailViewComponent', () => {
+describe("DetailViewComponent", () => {
   let component: DetailViewComponent;
   let fixture: ComponentFixture<DetailViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailViewComponent ]
-    })
-    .compileComponents();
+      declarations: [DetailViewComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +17,7 @@ describe('DetailViewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

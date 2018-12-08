@@ -30,7 +30,6 @@ export class DetailViewComponent implements OnInit, OnDestroy {
       if (res.command === "DELETE") {
         this.router.navigate(["/"]);
       }
-      console.log(res);
     });
   }
 
@@ -64,7 +63,6 @@ export class DetailViewComponent implements OnInit, OnDestroy {
             }
           )
           .subscribe(quoteData => {
-            console.log(quoteData);
             this.quoteData = quoteData;
           });
       });
