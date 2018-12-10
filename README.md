@@ -13,7 +13,7 @@ To get Node go to nodejs.org
 
 Clone this repo and enter:
 
-`git clone`
+`git clone https://github.com/Truroer/SellMyStuff.git`
 
 `cd SellMyStuff`
 
