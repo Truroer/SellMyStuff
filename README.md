@@ -1,6 +1,6 @@
 # SellMyStuff
 
-SellMyStuff is a web app offering a market place with shippment option calculation based on detected location of potential buyer. 
+I delevoped a module to calculate a package shipping cost from different providers, based on the user location, and item characteristics. This basic demo app shows the module integrated in a simple marketplace. 
 
 ## Screenshots
 
